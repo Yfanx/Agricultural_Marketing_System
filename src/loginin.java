@@ -6,7 +6,7 @@ public class loginin extends JFrame {
     JTextField jTextField_id;
     JTextField jTextField_ps;
     JButton jButton;
-//    controller controller;
+    controller controller;
 //    restListener restListener;
 
     public loginin(String title) throws HeadlessException {
@@ -59,10 +59,10 @@ public class loginin extends JFrame {
         jPanel.add(register);
         jPanel.add(login);
 
-//        add(jPanel);
-//        controller=new controller();
-//        controller.setView(this);
-//        login.addActionListener(controller);
+        add(jPanel);
+        controller=new controller();
+        controller.setView(this);
+        login.addActionListener(controller);
 //
 //        restListener = new restListener();
 //        restListener.setView(this);

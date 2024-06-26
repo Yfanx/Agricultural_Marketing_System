@@ -8,3 +8,9 @@ CREATE TABLE User (
                       CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+#创建管理员
+INSERT INTO User (Username, PasswordHash, Role) VALUES ('root','123','admin');
+
+delete from User
+where Username = 'root';
+
