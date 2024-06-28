@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f60b061-8ec2-43f6-ade0-e78d1a329a54" name="更改" comment="添加模板">
-      <change afterPath="$PROJECT_DIR$/jar/mysql-connector-j-8.4.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Example.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller.java" afterDir="false" />
+    <list default="true" id="5f60b061-8ec2-43f6-ade0-e78d1a329a54" name="更改" comment="完成数据库连接，并完成启动界面">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/restListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/0c6bc0c8-dee4-4bf0-930a-a2abe5dc579d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0c6bc0c8-dee4-4bf0-930a-a2abe5dc579d.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agricultural_Marketing_System.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Agricultural_Marketing_System.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/loginin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/loginin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user.sql" beforeDir="false" afterPath="$PROJECT_DIR$/user.sql" afterDir="false" />
     </list>
@@ -51,38 +45,53 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Code/Java/Agricultural_Marketing_System/jar/mysql-connector-j-8.4.0.jar&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;D:/Code/Java/Agricultural_Marketing_System/JDBC/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;应用程序.Example.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "17",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Code/Java/Agricultural_Marketing_System/jar/mysql-connector-j-8.4.0.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "D:/Code/Java/Agricultural_Marketing_System/JDBC/src/Main.java",
+    "project.structure.last.edited": "项目",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.Example.executor": "Run"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql_aurora_aws&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql_aurora_aws"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Code\Java\Agricultural_Marketing_System\jar" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Example" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Example" />
+      <module name="Agricultural_Marketing_System" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="应用程序.Example" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -108,7 +117,11 @@
       <workItem from="1719213401739" duration="1283000" />
       <workItem from="1719217424137" duration="5181000" />
       <workItem from="1719274028175" duration="614000" />
-      <workItem from="1719369916194" duration="7826000" />
+      <workItem from="1719369916194" duration="8590000" />
+      <workItem from="1719447427848" duration="6303000" />
+      <workItem from="1719471707552" duration="646000" />
+      <workItem from="1719541827033" duration="4435000" />
+      <workItem from="1719564279682" duration="399000" />
     </task>
     <task id="LOCAL-00001" summary="添加模板">
       <option name="closed" value="true" />
@@ -134,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719213412662</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="完成数据库连接，并完成启动界面">
+      <option name="closed" value="true" />
+      <created>1719398790306</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1719398790306</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,7 +163,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="添加模板" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加模板" />
+    <MESSAGE value="完成数据库连接，并完成启动界面" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成数据库连接，并完成启动界面" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -154,5 +176,8 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Agricultural_Marketing_System$Example.ic" NAME="Example 覆盖结果" MODIFIED="1719461300096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

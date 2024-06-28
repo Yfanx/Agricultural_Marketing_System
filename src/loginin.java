@@ -7,7 +7,7 @@ public class loginin extends JFrame {
     JTextField jTextField_ps;
     JButton jButton;
     controller controller;
-//    restListener restListener;
+    restListener restListener;
 
     public loginin(String title) throws HeadlessException {
         super(title);
@@ -63,11 +63,11 @@ public class loginin extends JFrame {
         controller=new controller();
         controller.setView(this);
         login.addActionListener(controller);
-//
-//        restListener = new restListener();
-//        restListener.setView(this);
-//        register.addActionListener(restListener);
-//        System.out.println("登录中....");
+
+        restListener = new restListener();
+        restListener.setView(this);
+        register.addActionListener(restListener);
+        System.out.println("登录中....");
 
 
     }
