@@ -7,7 +7,6 @@ public class loginin extends JFrame {
     JTextField jTextField_ps;
     JButton jButton;
     controller controller;
-    restListener restListener;
 
     public loginin(String title) throws HeadlessException {
         super(title);
@@ -48,26 +47,38 @@ public class loginin extends JFrame {
         jPanel.add(password_label);
         //密码文本域输入
         jTextField_ps = new JPasswordField(20);  //密码输入框，输入密码自动隐藏
+
         jTextField_ps.setBounds(100, 50, 165, 25);
         jPanel.add(jTextField_ps);
+
+//        // 在密码文本右侧加入一个勾选框，如果勾选则显示密码
+//        JCheckBox checkBox = new JCheckBox("显示密码");
+//        checkBox.setBounds(270, 50, 100, 25);
+
+
         //登录按钮
         JButton login = new JButton("登录");
         login.setBounds(80, 100, 80, 25);
         //注册按钮
-        JButton register = new JButton("重置");
+        JButton register = new JButton("注册");
         register.setBounds(200, 100, 80, 25);
         jPanel.add(register);
         jPanel.add(login);
+//        jPanel.add(checkBox);
 
         add(jPanel);
         controller=new controller();
         controller.setView(this);
         login.addActionListener(controller);
 
-        restListener = new restListener();
-        restListener.setView(this);
-        register.addActionListener(restListener);
-        System.out.println("登录中....");
+        // 添加注册按钮的事件监听，显示注册界面
+
+        register.addActionListener(e -> {
+            registerUI registerView = new registerUI("注册");
+            register registerController = new register();
+            registerView.setController(registerController);
+        });
+
 
 
     }

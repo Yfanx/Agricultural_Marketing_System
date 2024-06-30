@@ -16,7 +16,7 @@ public class controller implements ActionListener{
         user = new User();
         user.setUname(loginin.jTextField_id.getText());
         user.setPs(loginin.jTextField_ps.getText());
-        int role = db.query(user);
+        int role = db.queryDB(user);
         if (role != -1) {
             System.out.println("登录成功！");
             System.out.println("用户名：" + loginin.jTextField_id.getText());

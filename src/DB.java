@@ -23,24 +23,61 @@ public class DB {
     }
 
     // 查询用户
-    public static int query(User user) {
-        if (con == null) {
-            connectionDB();
-        }
+    public static int queryDB(User user) {
+
+        connectionDB();
+
         try{
-            sql = con.createStatement();
-            rs = sql.executeQuery("SELECT * FROM User WHERE Username = '" + user.getUname() + "' AND PasswordHash = '" + user.getPs() + "'");
+            String query = "SELECT * FROM User WHERE Username = ? AND PasswordHash = ?";
+            PreparedStatement preparedStatement = con.prepareStatement(query);
+            preparedStatement.setString(1, user.getUname());
+            preparedStatement.setString(2, user.getPs());
+            rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 user.setRole(rs.getString("Role"));
                 return 1; // 登录成功
             }
 
+            closeConnection();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        closeConnection();
+
         return -1; // 登录失败
+    }
+
+    //注册用户
+    public static boolean registerDB(User user) {
+        connectionDB();
+        // 检查用户是否已经存在
+        try {
+            sql = con.createStatement();
+            rs = sql.executeQuery("SELECT * FROM User WHERE Username = '" + user.getUname() + "'");
+            if (rs.next()) {
+                System.out.println("User already exists");
+                return false; // 用户已存在，注册失败
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false; // 查询失败，注册失败
+        }
+        //插入用户
+        try {
+
+            String query = "INSERT INTO User(Username, PasswordHash, Role) VALUES (?, ?, 'user')";
+            PreparedStatement preparedStatement = con.prepareStatement(query);
+            preparedStatement.setString(1, user.getUname());
+            preparedStatement.setString(2, user.getPs());
+            preparedStatement.executeUpdate();
+            closeConnection();
+            return true; // 注册成功
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false; // 注册失败
+        }
+
     }
 
     public static void closeConnection() {

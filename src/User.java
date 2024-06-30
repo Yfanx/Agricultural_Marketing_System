@@ -17,6 +17,11 @@ public class User {
         this.role = role;
         this.createdAt = createdAt;
     }
+    public User(String uname, String ps, String role) {
+        this.uname = uname;
+        this.ps = ps;
+        this.role = role;
+    }
 
     public int getUid() {
         return uid;
