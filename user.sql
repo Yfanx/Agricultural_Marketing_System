@@ -16,6 +16,9 @@ INSERT INTO User (Username, PasswordHash, Role) VALUES ('user','123','user');
 delete from User
 where Username = 'root';
 
+delete from User
+where Role = 'user';
+
 # 用户信息（用户编号，用户名，用户密码，用户角色，注册时间）
 # 注册客户（客户编号，客户电话，客户地址，客户名称，用户编号）外键：用户编号
 

@@ -2,13 +2,13 @@ import javax.swing.*;
 
 import java.awt.*;
 
-public class loginin extends JFrame {
+public class loginUI extends JFrame {
     JTextField jTextField_id;
     JTextField jTextField_ps;
     JButton jButton;
-    controller controller;
+    login login;
 
-    public loginin(String title) throws HeadlessException {
+    public loginUI(String title) throws HeadlessException {
         super(title);
         setVisible(true);
         setLocationRelativeTo(null);
@@ -67,9 +67,9 @@ public class loginin extends JFrame {
 //        jPanel.add(checkBox);
 
         add(jPanel);
-        controller=new controller();
-        controller.setView(this);
-        login.addActionListener(controller);
+        this.login =new login();
+        this.login.setView(this);
+        login.addActionListener(this.login);
 
         // 添加注册按钮的事件监听，显示注册界面
 
