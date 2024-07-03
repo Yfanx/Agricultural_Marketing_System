@@ -276,6 +276,31 @@ public class DB {
         }
     }
 
+    //获取所有供应商信息
+    public static List<Supplier_Information> getAllSuppliers() {
+        List<Supplier_Information> suppliers = new ArrayList<>();
+        connectionDB();
+        try {
+            String query = "SELECT * FROM Supplier_Information";
+            PreparedStatement preparedStatement = con.prepareStatement(query);
+            rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int supplierID = rs.getInt("SupplierID");
+                String supplierName = rs.getString("SupplierName");
+                String supplierAddress = rs.getString("SupplierAddress");
+                String supplierPhone = rs.getString("SupplierPhone");
+                Supplier_Information supplier = new Supplier_Information(supplierID, supplierName, supplierAddress, supplierPhone);
+                suppliers.add(supplier);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return suppliers;
+    }
+
+
     //查看供应商信息
     public static Supplier_Information getSupplierInformation(String supplierName) {
         connectionDB();
@@ -342,6 +367,76 @@ public class DB {
         }
         return orders;
     }
+
+    // 添加农产品
+    public static boolean addProduct(Agricultural_Information product, int supplierID) {
+        connectionDB();
+        try {
+            String query = "INSERT INTO Agricultural_Information (AgriculturalName, AgriculturalType, AgriculturalIntroduction, Price) VALUES (?, ?, ?, ?)";
+            PreparedStatement preparedStatement = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1, product.getAgriculturalName());
+            preparedStatement.setString(2, product.getAgriculturalType());
+            preparedStatement.setString(3, product.getAgriculturalIntroduction());
+            preparedStatement.setDouble(4, product.getPrice());
+            int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows > 0) {
+                ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    int productID = generatedKeys.getInt(1);
+                    return addProvide(productID, supplierID);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return false;
+    }
+
+    // 添加供应商
+    public static boolean addSupplier(Supplier_Information supplier) {
+        connectionDB();
+        try {
+            String query = "INSERT INTO Supplier_Information (SupplierName, SupplierAddress, SupplierPhone) VALUES (?, ?, ?)";
+            PreparedStatement preparedStatement = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1, supplier.getSupplierName());
+            preparedStatement.setString(2, supplier.getSupplierAddress());
+            preparedStatement.setString(3, supplier.getSupplierPhone());
+            int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows > 0) {
+                ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    supplier.setSupplierID(generatedKeys.getInt(1));
+                }
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return false;
+    }
+
+    // 添加农产品供应关系
+    public static boolean addProvide(int agriculturalID, int supplierID) {
+        connectionDB();
+        try {
+            String query = "INSERT INTO Provide (AgriculturalID, SupplierID) VALUES (?, ?)";
+            PreparedStatement preparedStatement = con.prepareStatement(query);
+            preparedStatement.setInt(1, agriculturalID);
+            preparedStatement.setInt(2, supplierID);
+            int affectedRows = preparedStatement.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return false;
+    }
+
 
 
     public static void closeConnection() {

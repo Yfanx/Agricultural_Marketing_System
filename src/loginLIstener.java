@@ -24,6 +24,8 @@ public class loginLIstener implements ActionListener{
             System.out.println("-----------------");
             if(userInformation.getRole().equals("admin")) {
                 JOptionPane.showMessageDialog(loginUI, "登录成功！欢迎管理员", "提示", JOptionPane.NO_OPTION);
+                // 打开管理员界面
+                new Main_adminUI(userInformation).setVisible(true);
             }else if(userInformation.getRole().equals("user")) {
                 String welcome = "登录成功！欢迎 "+ userInformation.getUname();
                 JOptionPane.showMessageDialog(loginUI, welcome, "提示", JOptionPane.NO_OPTION);

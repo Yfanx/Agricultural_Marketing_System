@@ -49,12 +49,7 @@ public class Supplier_Information {
 
     @Override
     public String toString() {
-        return "Supplier_Information{" +
-                "supplierID=" + supplierID +
-                ", supplierName='" + supplierName + '\'' +
-                ", supplierAddress='" + supplierAddress + '\'' +
-                ", supplierPhone='" + supplierPhone + '\'' +
-                '}';
+        return supplierName;
     }
 }
 

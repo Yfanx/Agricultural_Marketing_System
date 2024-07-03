@@ -4,39 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f60b061-8ec2-43f6-ade0-e78d1a329a54" name="更改" comment="rename">
-      <change afterPath="$PROJECT_DIR$/src/AddCartButtonListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CustomerInfoUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DeleteButtonListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main_adminUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main_userUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ModifyInfoButtonListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PurchaseButtonListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/RefreshButtonListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SearchButtonListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ShoppingCartUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SupplierInfoButtonListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ViewCartButtonListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ViewOrderButtonListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Agricultural_Information.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Appear.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Customer_Information.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Provide.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Purchase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Sales_Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Shopping_Cart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Supplier_Information.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.sql" afterDir="false" />
+    <list default="true" id="5f60b061-8ec2-43f6-ade0-e78d1a329a54" name="更改" comment="完成用户界面">
+      <change afterPath="$PROJECT_DIR$/src/AddProductButtonListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AddProductUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AddSupplierButtonListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/0c6bc0c8-dee4-4bf0-930a-a2abe5dc579d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0c6bc0c8-dee4-4bf0-930a-a2abe5dc579d.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CustomerInfoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomerInfoUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/User_Information.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/loginLIstener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/loginUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/registerLIstener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/registerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/registerUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user.sql" beforeDir="false" afterPath="$PROJECT_DIR$/user.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main_adminUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main_adminUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loginLIstener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/loginLIstener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Supplier_Information.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Supplier_Information.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +71,7 @@
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true",
     "应用程序.Example.executor": "Run",
+    "应用程序.Main_adminUI.executor": "Run",
     "应用程序.Main_userUI.executor": "Run",
     "应用程序.User_MainUI.executor": "Run",
     "应用程序.user_mainUI.executor": "Run"
@@ -119,6 +99,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main_adminUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main_adminUI" />
+      <module name="Agricultural_Marketing_System" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main_userUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main_userUI" />
       <module name="Agricultural_Marketing_System" />
@@ -129,6 +116,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="应用程序.Example" />
+        <item itemvalue="应用程序.Main_adminUI" />
         <item itemvalue="应用程序.Main_userUI" />
       </list>
     </recent_temporary>
@@ -167,7 +155,8 @@
       <workItem from="1719793806026" duration="226000" />
       <workItem from="1719794040326" duration="17413000" />
       <workItem from="1719844366499" duration="2804000" />
-      <workItem from="1719969360369" duration="28198000" />
+      <workItem from="1719969360369" duration="28416000" />
+      <workItem from="1720021969780" duration="5573000" />
     </task>
     <task id="LOCAL-00001" summary="添加模板">
       <option name="closed" value="true" />
@@ -225,7 +214,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719796505743</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="完成用户界面">
+      <option name="closed" value="true" />
+      <created>1720014962930</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1720014962930</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,7 +234,8 @@
     <MESSAGE value="完成启动界面" />
     <MESSAGE value="完成注册功能" />
     <MESSAGE value="rename" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename" />
+    <MESSAGE value="完成用户界面" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成用户界面" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
