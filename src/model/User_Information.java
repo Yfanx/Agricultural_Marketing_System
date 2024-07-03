@@ -1,6 +1,7 @@
+package model;
 import java.sql.Timestamp;
 
-public class User {
+public class User_Information {
     private int uid;             //用户id
     private String uname;        //用户名
     private String ps;           //密码
@@ -8,16 +9,16 @@ public class User {
     private Timestamp createdAt; //创建时间
 
 
-    public User(){}
+    public User_Information(){}
 
-    public User(int uid, String uname, String ps, String role, Timestamp createdAt) {
+    public User_Information(int uid, String uname, String ps, String role, Timestamp createdAt) {
         this.uid = uid;
         this.uname = uname;
         this.ps = ps;
         this.role = role;
         this.createdAt = createdAt;
     }
-    public User(String uname, String ps, String role) {
+    public User_Information(String uname, String ps, String role) {
         this.uname = uname;
         this.ps = ps;
         this.role = role;

@@ -1,8 +1,9 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import model.*;
 
-public class register implements ActionListener {
+public class registerLIstener implements ActionListener {
     registerUI registerUI;
 
     public void setView(registerUI registerUI) {
@@ -26,7 +27,7 @@ public class register implements ActionListener {
         }
 
         // 执行注册逻辑，例如保存到数据库
-        // 示例代码，需替换为实际注册逻辑
+
         boolean success = registerUser(username, password, "user");
         if (success) {
             JOptionPane.showMessageDialog(registerUI, "注册成功", "成功", JOptionPane.INFORMATION_MESSAGE);
@@ -36,9 +37,8 @@ public class register implements ActionListener {
         }
     }
 
-    // 示例注册逻辑，需替换为实际实现
     private boolean registerUser(String username, String password, String role) {
-        User user = new User(username, password, role);
-        return DB.registerDB(user);
+        User_Information userInformation = new User_Information(username, password, role);
+        return DB.registerDB(userInformation);
     }
 }

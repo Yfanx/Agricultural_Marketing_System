@@ -1,10 +1,11 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import model.*;
 
-public class login implements ActionListener{
+public class loginLIstener implements ActionListener{
     loginUI loginUI;
-    User user;
+    User_Information userInformation;
     //TODO 添加一个对象用于打开新的界面;
 
     @Override
@@ -12,19 +13,22 @@ public class login implements ActionListener{
         // TODO Auto-generated method stub
 
         DB db = new DB();
-        user = new User();
-        user.setUname(loginUI.jTextField_id.getText());
-        user.setPs(loginUI.jTextField_ps.getText());
-        int role = db.queryDB(user);
+        userInformation = new User_Information();
+        userInformation.setUname(loginUI.jTextField_id.getText());
+        userInformation.setPs(loginUI.jTextField_ps.getText());
+        int role = db.queryDB(userInformation);
         if (role != -1) {
             System.out.println("登录成功！");
             System.out.println("用户名：" + loginUI.jTextField_id.getText());
             System.out.println("密 码：" + loginUI.jTextField_ps.getText());
             System.out.println("-----------------");
-            if(user.getRole().equals("admin")) {
+            if(userInformation.getRole().equals("admin")) {
                 JOptionPane.showMessageDialog(loginUI, "登录成功！欢迎管理员", "提示", JOptionPane.NO_OPTION);
-            }else if(user.getRole().equals("user")) {
-                JOptionPane.showMessageDialog(loginUI, "登录成功！", "提示", JOptionPane.NO_OPTION);
+            }else if(userInformation.getRole().equals("user")) {
+                String welcome = "登录成功！欢迎 "+ userInformation.getUname();
+                JOptionPane.showMessageDialog(loginUI, welcome, "提示", JOptionPane.NO_OPTION);
+                // 打开用户界面
+                new Main_userUI(userInformation).setVisible(true);
             }
             //TODO 添加一个对象用于打开新的界面;
             loginUI.dispose();

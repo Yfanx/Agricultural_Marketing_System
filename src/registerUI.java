@@ -6,7 +6,7 @@ public class registerUI extends JFrame {
     JPasswordField jPasswordField_password;
     JPasswordField jPasswordField_confirmPassword;
     JButton jButton_register;
-    register registerController;
+    registerLIstener registerLIstenerController;
 
     public registerUI(String title) {
         super(title);
@@ -61,8 +61,8 @@ public class registerUI extends JFrame {
         add(jPanel);
     }
 
-    public void setController(register controller) {
-        this.registerController = controller;
+    public void setController(registerLIstener controller) {
+        this.registerLIstenerController = controller;
         jButton_register.addActionListener(controller);
         controller.setView(this);
     }

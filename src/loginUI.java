@@ -5,8 +5,7 @@ import java.awt.*;
 public class loginUI extends JFrame {
     JTextField jTextField_id;
     JTextField jTextField_ps;
-    JButton jButton;
-    login login;
+    loginLIstener loginLIstener;
 
     public loginUI(String title) throws HeadlessException {
         super(title);
@@ -18,7 +17,6 @@ public class loginUI extends JFrame {
     }
 
     private void init() {
-
 
         JPanel jPanel = new JPanel();
         jPanel.setLayout(null); //布局设置为空，之后可以手动设置组件的坐标位置和大小
@@ -67,19 +65,17 @@ public class loginUI extends JFrame {
 //        jPanel.add(checkBox);
 
         add(jPanel);
-        this.login =new login();
-        this.login.setView(this);
-        login.addActionListener(this.login);
+        this.loginLIstener =new loginLIstener();
+        this.loginLIstener.setView(this);
+        login.addActionListener(this.loginLIstener);
 
         // 添加注册按钮的事件监听，显示注册界面
 
         register.addActionListener(e -> {
             registerUI registerView = new registerUI("注册");
-            register registerController = new register();
-            registerView.setController(registerController);
+            registerLIstener registerLIstenerController = new registerLIstener();
+            registerView.setController(registerLIstenerController);
         });
-
-
 
     }
 
