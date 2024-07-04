@@ -437,6 +437,189 @@ public class DB {
         return false;
     }
 
+    //更新农产品信息
+    public static boolean updateProductInfo(Agricultural_Information product) {
+        connectionDB();
+        try {
+            String query = "UPDATE Agricultural_Information SET AgriculturalName = ?, AgriculturalType = ?, AgriculturalIntroduction = ?, Price = ? WHERE AgriculturalID = ?";
+            PreparedStatement preparedStatement = con.prepareStatement(query);
+            preparedStatement.setString(1, product.getAgriculturalName());
+            preparedStatement.setString(2, product.getAgriculturalType());
+            preparedStatement.setString(3, product.getAgriculturalIntroduction());
+            preparedStatement.setDouble(4, product.getPrice());
+            preparedStatement.setInt(5, product.getAgriculturalID());
+            preparedStatement.executeUpdate();
+
+            String supplierQuery = "UPDATE Provide SET SupplierID = (SELECT SupplierID FROM Supplier_Information WHERE SupplierName = ?) WHERE AgriculturalID = ?";
+            PreparedStatement supplierPreparedStatement = con.prepareStatement(supplierQuery);
+            supplierPreparedStatement.setString(1, product.getSupplierName());
+            supplierPreparedStatement.setInt(2, product.getAgriculturalID());
+            supplierPreparedStatement.executeUpdate();
+
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            closeConnection();
+        }
+    }
+
+    //删除农产品信息
+    public static boolean deleteProductInfo(Agricultural_Information product) {
+        connectionDB();
+        try {
+            String deleteProvideQuery = "DELETE FROM Provide WHERE AgriculturalID = ?";
+            PreparedStatement providePreparedStatement = con.prepareStatement(deleteProvideQuery);
+            providePreparedStatement.setInt(1, product.getAgriculturalID());
+            providePreparedStatement.executeUpdate();
+
+            String deleteProductQuery = "DELETE FROM Agricultural_Information WHERE AgriculturalID = ?";
+            PreparedStatement productPreparedStatement = con.prepareStatement(deleteProductQuery);
+            productPreparedStatement.setInt(1, product.getAgriculturalID());
+            productPreparedStatement.executeUpdate();
+
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            closeConnection();
+        }
+    }
+
+    public static Agricultural_Information getAgriculturalInformationById(int agriculturalID) {
+        connectionDB();
+        Agricultural_Information product = null;
+        try {
+            String query = "SELECT a.AgriculturalID, a.AgriculturalName, a.AgriculturalType, a.AgriculturalIntroduction, a.Price, s.SupplierName " +
+                    "FROM Agricultural_Information a " +
+                    "JOIN Provide p ON a.AgriculturalID = p.AgriculturalID " +
+                    "JOIN Supplier_Information s ON p.SupplierID = s.SupplierID " +
+                    "WHERE a.AgriculturalID = ?";
+            PreparedStatement preparedStatement = con.prepareStatement(query);
+            preparedStatement.setInt(1, agriculturalID);
+            rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                String name = rs.getString("AgriculturalName");
+                String type = rs.getString("AgriculturalType");
+                String introduction = rs.getString("AgriculturalIntroduction");
+                double price = rs.getDouble("Price");
+                String supplierName = rs.getString("SupplierName");
+                product = new Agricultural_Information(agriculturalID, name, type, introduction, price, supplierName);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return product;
+    }
+
+    // 更新供应商信息
+    public static boolean updateSupplierInfo(Supplier_Information supplier) {
+        connectionDB();
+        try {
+            String query = "UPDATE Supplier_Information SET SupplierName = ?, SupplierAddress = ?, SupplierPhone = ? WHERE SupplierID = ?";
+            PreparedStatement preparedStatement = con.prepareStatement(query);
+            preparedStatement.setString(1, supplier.getSupplierName());
+            preparedStatement.setString(2, supplier.getSupplierAddress());
+            preparedStatement.setString(3, supplier.getSupplierPhone());
+            preparedStatement.setInt(4, supplier.getSupplierID());
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            closeConnection();
+        }
+    }
+
+    // 删除供应商信息
+    public static boolean deleteSupplier(int supplierID) {
+        connectionDB();
+        try {
+            // 通过多表查询找到所有需要删除的农产品ID
+            String selectAgriculturalIDQuery = "SELECT AgriculturalID FROM Provide WHERE SupplierID = ?";
+            PreparedStatement selectAgriculturalIDStmt = con.prepareStatement(selectAgriculturalIDQuery);
+            selectAgriculturalIDStmt.setInt(1, supplierID);
+            ResultSet rs = selectAgriculturalIDStmt.executeQuery();
+            List<Integer> agriculturalIDs = new ArrayList<>();
+            while (rs.next()) {
+                agriculturalIDs.add(rs.getInt("AgriculturalID"));
+            }
+
+            // 删除Provide表中的相关记录
+            String deleteProvideQuery = "DELETE FROM Provide WHERE SupplierID = ?";
+            PreparedStatement deleteProvideStmt = con.prepareStatement(deleteProvideQuery);
+            deleteProvideStmt.setInt(1, supplierID);
+            deleteProvideStmt.executeUpdate();
+
+            // 删除Agricultural_Information表中的相关记录
+            for (int agriculturalID : agriculturalIDs) {
+                String deleteAgriculturalQuery = "DELETE FROM Agricultural_Information WHERE AgriculturalID = ?";
+                PreparedStatement deleteAgriculturalStmt = con.prepareStatement(deleteAgriculturalQuery);
+                deleteAgriculturalStmt.setInt(1, agriculturalID);
+                deleteAgriculturalStmt.executeUpdate();
+            }
+
+            // 删除Supplier_Information表中的相关记录
+            String query = "DELETE FROM Supplier_Information WHERE SupplierID = ?";
+            PreparedStatement preparedStatement3 = con.prepareStatement(query);
+            preparedStatement3.setInt(1, supplierID);
+            preparedStatement3.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            closeConnection();
+        }
+    }
+
+    public static boolean deleteOrder(int orderID) {
+        connectionDB();
+        try {
+            String query = "DELETE FROM Sales_Order WHERE OrderID = ?";
+            PreparedStatement preparedStatement = con.prepareStatement(query);
+            preparedStatement.setInt(1, orderID);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            closeConnection();
+        }
+    }
+
+    public static List<Sales_Order> getAllOrders() {
+        connectionDB();
+        List<Sales_Order> orders = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM Sales_Order";
+            PreparedStatement preparedStatement = con.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int orderID = rs.getInt("OrderID");
+                String agriculturalName = rs.getString("AgriculturalName");
+                Timestamp orderCreateTime = rs.getTimestamp("OrderCreateTime");
+                double totalPrice = rs.getDouble("TotalPrice");
+                int userID = rs.getInt("UserID");
+                Sales_Order order = new Sales_Order(orderID, agriculturalName, orderCreateTime, totalPrice, userID);
+                orders.add(order);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return orders;
+    }
+
+
+
 
 
     public static void closeConnection() {

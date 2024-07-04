@@ -120,10 +120,9 @@ public class Main_adminUI extends JFrame {
         refreshButton.addActionListener(new RefreshButtonListener(model));
         addSupplierButton.addActionListener(e -> new AddSupplierUI());
         addProductButton.addActionListener(e -> new AddProductUI());
-        // viewProductButton.addActionListener(new ViewProductButtonListener());
-        // viewSupplierButton.addActionListener(new ViewSupplierButtonListener());
-        // addSupplierButton.addActionListener(new AddSupplierButtonListener());
-        // viewOrderButton.addActionListener(new ViewOrderButtonListener());
+        viewProductButton.addActionListener(new ViewProductButtonListener(table));
+        viewSupplierButton.addActionListener(new ViewSupplierButtonListener(table));
+        viewOrderButton.addActionListener(new AdminViewOrderButtonListener(table));
 
         // 初始化时显示所有农产品信息
         displayAllAgriculturalProducts();
